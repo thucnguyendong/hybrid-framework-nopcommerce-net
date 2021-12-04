@@ -8,7 +8,7 @@ using System.Threading;
 
 namespace hybrid_framwork_nopcommerce.actions.commons
 {
-    class BasePage
+    public class BasePage
     {
         public void OpenBrowser(IWebDriver driver, String url)
         {

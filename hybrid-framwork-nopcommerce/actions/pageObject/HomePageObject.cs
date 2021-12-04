@@ -5,7 +5,7 @@ using System.Text;
 
 namespace hybrid_framwork_nopcommerce.actions.pageObject
 {
-    class HomePageObject
+    public class HomePageObject:commons.BasePage 
     {
         private IWebDriver driver;
 
@@ -14,5 +14,22 @@ namespace hybrid_framwork_nopcommerce.actions.pageObject
             this.driver = driver;
         }
 
+        public void OpenHomePage()
+        {
+            driver.Navigate().GoToUrl("https://demo.nopcommerce.com/");
+        }
+
+        public void ClickRegisterLink()
+        {
+            WaitForElementClickable(driver, HomePageUI.RESGISTER_LINK);
+            ClickElement(driver, HomePageUI.RESGISTER_LINK);
+        }
+
+        public LoginPageObject ClickLoginLink()
+        {
+            WaitForElementClickable(driver, HomePageUI.LOGIN_LINK);
+            ClickElement(driver, HomePageUI.LOGIN_LINK);
+            return PageGenerator.GetLoginPage(driver);
+        }
     }
 }

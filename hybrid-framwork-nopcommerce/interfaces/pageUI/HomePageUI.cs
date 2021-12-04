@@ -4,9 +4,9 @@ using System.Text;
 
 namespace hybrid_framwork_nopcommerce.actions.pageObject
 {
-    class HomePageUI
+    public class HomePageUI
     {
-        private static readonly string RESGISTER_LINK = "//a[@class='ico-register']";
-        private static readonly string LOGIN_LINK = "//a[@class='ico-login']";
+        public static readonly string RESGISTER_LINK = "//a[@class='ico-register']";
+        public static readonly string LOGIN_LINK = "//a[@class='ico-login']";
     }
 }
