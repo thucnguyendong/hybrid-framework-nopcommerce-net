@@ -19,10 +19,11 @@ namespace hybrid_framwork_nopcommerce.actions.pageObject
             driver.Navigate().GoToUrl("https://demo.nopcommerce.com/");
         }
 
-        public void ClickRegisterLink()
+        public RegisterPageObject ClickRegisterLink()
         {
             WaitForElementClickable(driver, HomePageUI.RESGISTER_LINK);
             ClickElement(driver, HomePageUI.RESGISTER_LINK);
+            return PageGenerator.GetRegisterPage(driver);
         }
 
         public LoginPageObject ClickLoginLink()
@@ -30,6 +31,12 @@ namespace hybrid_framwork_nopcommerce.actions.pageObject
             WaitForElementClickable(driver, HomePageUI.LOGIN_LINK);
             ClickElement(driver, HomePageUI.LOGIN_LINK);
             return PageGenerator.GetLoginPage(driver);
+        }
+
+
+        public Boolean IsMyAccountLinkDisplayed()
+        {
+            return IsElementDisplayed(driver, HomePageUI.MY_ACCOUNT_LINK);
         }
     }
 }

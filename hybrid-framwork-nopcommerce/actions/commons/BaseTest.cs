@@ -12,10 +12,10 @@ namespace hybrid_framwork_nopcommerce.actions.commons
         private IWebDriver driver;
 
         // This will get the current WORKING directory (i.e. \bin\Debug)
-        string workingDirectory = Environment.CurrentDirectory;
+        private string workingDirectory = Environment.CurrentDirectory;
 
         // This will get the current PROJECT directory
-        string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+        private string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
         protected IWebDriver GetLocalBrowserDriver(string browserName)
         {
             if (browserName.Equals("chrome"))

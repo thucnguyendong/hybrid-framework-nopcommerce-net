@@ -11,5 +11,15 @@ namespace hybrid_framwork_nopcommerce.actions.pageObject
         {
             return new LoginPageObject(driver);
         }
+
+        public static HomePageObject GetHomePage(IWebDriver driver)
+        {
+            return new HomePageObject(driver);
+        }
+
+        public static RegisterPageObject GetRegisterPage(IWebDriver driver)
+        {
+            return new RegisterPageObject(driver);
+        }
     }
 }

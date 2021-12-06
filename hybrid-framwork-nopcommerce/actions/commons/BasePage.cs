@@ -383,7 +383,7 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             });
         }
 
-        public int getRandomNumber()
+        public int GetRandomNumber()
         {
             Random rand = new Random();
             return rand.Next(999);
@@ -400,5 +400,15 @@ namespace hybrid_framwork_nopcommerce.actions.commons
                 Console.WriteLine(e.ToString());
             }
         }
+        private String GetDynamicLocator(String locator, params Object[] list)
+        {
+            return String.Format(locator, list);
+        }
+
+        public String GetRandomEmail(string emailDomain)
+        {
+            return String.Format("Test{0}@{1}", GetRandomNumber(),emailDomain);
+        }
+
     }
 }
