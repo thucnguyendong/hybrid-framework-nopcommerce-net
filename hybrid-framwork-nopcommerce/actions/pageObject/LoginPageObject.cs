@@ -23,10 +23,11 @@ namespace hybrid_framwork_nopcommerce.actions.pageObject
             InputIntoElement(driver, LoginPageUI.PASSWORD_TEXTBOX, password);
         }
 
-        public void ClickLogin()
+        public HomePageObject ClickLogin()
         {
             WaitForElementVisible(driver, LoginPageUI.LOGIN_BUTTON);
             ClickElement(driver, LoginPageUI.LOGIN_BUTTON);
+            return PageGenerator.GetHomePage(driver);
         }
 
         public string GetEmailError()

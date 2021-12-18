@@ -38,5 +38,12 @@ namespace hybrid_framwork_nopcommerce.actions.pageObject
         {
             return IsElementDisplayed(driver, HomePageUI.MY_ACCOUNT_LINK);
         }
+
+        public CustomerInfoPageObject ClickMyAccountLink()
+        {
+            WaitForElementClickable(driver, HomePageUI.MY_ACCOUNT_LINK);
+            ClickElement(driver, HomePageUI.MY_ACCOUNT_LINK);
+            return PageGenerator.GetCustomerInfoPage(driver);
+        }
     }
 }

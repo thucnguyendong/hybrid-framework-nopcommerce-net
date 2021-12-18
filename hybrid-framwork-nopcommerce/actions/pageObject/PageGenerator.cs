@@ -21,5 +21,10 @@ namespace hybrid_framwork_nopcommerce.actions.pageObject
         {
             return new RegisterPageObject(driver);
         }
+
+        public static CustomerInfoPageObject GetCustomerInfoPage(IWebDriver driver)
+        {
+            return new CustomerInfoPageObject(driver);
+        }
     }
 }

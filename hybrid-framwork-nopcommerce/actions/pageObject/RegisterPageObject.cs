@@ -93,10 +93,11 @@ namespace hybrid_framwork_nopcommerce.actions.pageObject
 			InputIntoElement(driver, RegisterPageUI.CONFIRM_PASSWORD_TEXTBOX, password);
 		}
 
-		public void ClickRegisterButton()
+		public HomePageObject ClickRegisterButton()
 		{
 			WaitForElementVisible(driver, RegisterPageUI.REGISTER_BUTTON);
 			ClickElement(driver, RegisterPageUI.REGISTER_BUTTON);
+			return PageGenerator.GetHomePage(driver);
 		}
 
 		public String GetFirstNameErrorMessage()
