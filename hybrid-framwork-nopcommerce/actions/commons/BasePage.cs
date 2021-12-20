@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using hybrid_framwork_nopcommerce.interfaces.pageUI;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -125,6 +126,11 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             return driver.FindElements(GetByXpath(xpathLocator));
         }
 
+        public void ClickElement(IWebDriver driver, String xpathLocator, params Object[] list)
+        {
+            GetElement(driver, GetDynamicLocator(xpathLocator,list)).Click();
+        }
+
         public void ClickElement(IWebDriver driver, String xpathLocator)
         {
             GetElement(driver, xpathLocator).Click();
@@ -149,6 +155,12 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             wait.Until(ExpectedConditions.InvisibilityOfElementLocated(GetByXpath(xpathLocator)));
         }
 
+        public void WaitForElementInvisible(IWebDriver driver, String xpathLocator, params Object[] list)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, System.TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.InvisibilityOfElementLocated(GetByXpath(GetDynamicLocator(xpathLocator,list))));
+        }
+
         public void WaitForAllElementsVisible(IWebDriver driver, String xpathLocator)
         {
             WebDriverWait wait = new WebDriverWait(driver, System.TimeSpan.FromSeconds(30));
@@ -160,10 +172,22 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             wait.Until(ExpectedConditions.ElementIsVisible(GetByXpath(xpathLocator)));
         }
 
+        public void WaitForElementVisible(IWebDriver driver, String xpathLocator, params Object[] list)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, System.TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.ElementIsVisible(GetByXpath(GetDynamicLocator(xpathLocator,list))));
+        }
+
         public void WaitForElementClickable(IWebDriver driver, String xpathLocator)
         {
             WebDriverWait wait = new WebDriverWait(driver, System.TimeSpan.FromSeconds(30));
             wait.Until(ExpectedConditions.ElementToBeClickable(GetByXpath(xpathLocator)));
+        }
+
+        public void WaitForElementClickable(IWebDriver driver, String xpathLocator, params Object[] list)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, System.TimeSpan.FromSeconds(30));
+            wait.Until(ExpectedConditions.ElementToBeClickable(GetByXpath(GetDynamicLocator(xpathLocator,list))));
         }
 
         public void SelectItemInDefaultDropdown(IWebDriver driver, String xpathLocator, String input)
@@ -410,5 +434,16 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             return String.Format("Test{0}@{1}", GetRandomNumber(),emailDomain);
         }
 
+        public void ClickItemInMyAccountMenuByName(IWebDriver driver, string menuItem)
+        {
+            WaitForElementClickable(driver,BasePageUI.DYNAMIC_ITEM_IN_MY_ACCOUNT,menuItem);
+            ClickElement(driver, BasePageUI.DYNAMIC_ITEM_IN_MY_ACCOUNT, menuItem);
+        }
+
+        public void ClickItemInFooterByName(IWebDriver driver, string menuItem)
+        {
+            WaitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_FOOTER, menuItem);
+            ClickElement(driver, BasePageUI.DYNAMIC_PAGE_FOOTER, menuItem);
+        }
     }
 }

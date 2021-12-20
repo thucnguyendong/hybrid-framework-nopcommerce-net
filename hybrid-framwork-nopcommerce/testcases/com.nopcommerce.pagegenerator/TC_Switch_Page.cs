@@ -8,12 +8,11 @@ using System.Text;
 
 namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.pagegenerator
 {
-    class TC_Page_Generator_Manager : actions.commons.BaseTest
+    class TC_Switch_Page : actions.commons.BaseTest
     {
         private IWebDriver driver;
         private HomePageObject homePage;
         private RegisterPageObject registerPage;
-        private LoginPageObject loginPage;
         private CustomerInfoPageObject customerInfoPage;
 
         private string firstName = "Nguyen";
@@ -45,29 +44,25 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.pagegenerator
             registerPage.InputCompany(company);
             registerPage.InputPassword(password);
             registerPage.InputConfirmPassword(confirmPassword);
-            registerPage.ClickRegisterButton();
+            homePage = registerPage.ClickRegisterButton();
             Assert.AreEqual(registerPage.GetSuccessMessage(), "Your registration completed");
-            homePage = registerPage.ClickLogOutLink();
         }
 
         [Test]
-        public void TC_Login_Successfully()
+        public void TC_Switch_Page_Successfully()
         {
-            loginPage= homePage.ClickLoginLink();
-            loginPage.InputEmail(email);
-            loginPage.InputPassword(password);
-            homePage =loginPage.ClickLogin();
             customerInfoPage = homePage.ClickMyAccountLink();
-            Assert.AreEqual(customerInfoPage.GetFirstNameTextboxValue(),firstName);
-            Assert.AreEqual(customerInfoPage.GetLastNameTextboxValue(),lastName);
-            Assert.AreEqual(customerInfoPage.GetEmailTextboxValue(),email);
+            customerInfoPage.ClickItemInMyAccountMenuByName(driver, "Addresses");
+            AddressPageObject addressPage = PageGenerator.GetAddressPage(driver);
+            addressPage.ClickItemInMyAccountMenuByName(driver, "My product reviews");
+            MyProductReviewPageObject myProductReviewPageObject = PageGenerator.GetMyProductReviewPage(driver);
             Assert.Pass();
         }
 
         [TearDown]
         public void TearDown()
         {
-            driver.Quit();
+            //driver.Quit();
         }
     }
 }
