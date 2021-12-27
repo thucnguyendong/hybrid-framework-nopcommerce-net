@@ -4,7 +4,7 @@ using System.Text;
 
 namespace hybrid_framwork_nopcommerce.interfaces.pageUI
 {
-    public class CustomerInfoPageUI
+    public class UserCustomerInfoPageUI
     {
         internal static readonly string EMAIL_TEXTBOX = "//input[@id='Email']";
         internal static readonly string FIRSTNAME_TEXTBOX= "//input[@id='FirstName']";

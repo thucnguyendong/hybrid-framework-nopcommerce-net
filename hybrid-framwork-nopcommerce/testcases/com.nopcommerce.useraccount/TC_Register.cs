@@ -7,8 +7,8 @@ namespace hybrid_framwork_nopcommerce
     public class TC_Register: actions.commons.BaseTest
     {
         private IWebDriver driver;
-        private HomePageObject homePage;
-        private RegisterPageObject registerPage;
+        private UserHomePageObject homePage;
+        private UserRegisterPageObject registerPage;
 
         private string firstName = "Nguyen";
         private string lastName = "Thuc";
@@ -25,7 +25,7 @@ namespace hybrid_framwork_nopcommerce
         public void Setup()
         {
             driver = GetLocalBrowserDriver("chrome");
-            homePage = new HomePageObject(driver);
+            homePage = new UserHomePageObject(driver);
             homePage.OpenHomePage();
         }
 

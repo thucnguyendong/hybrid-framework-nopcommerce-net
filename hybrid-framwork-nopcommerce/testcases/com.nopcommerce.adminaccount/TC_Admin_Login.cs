@@ -1,24 +1,31 @@
-﻿using hybrid_framwork_nopcommerce.actions.pageObject;
+﻿using hybrid_framwork_nopcommerce.actions.commons;
+using hybrid_framwork_nopcommerce.actions.pageObject;
+using hybrid_framwork_nopcommerce.actions.pageObject.admin;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
+namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.adminaccount
 {
-    class TC_Login_Successfully:actions.commons.BaseTest
+    class TC_Admin_Login: actions.commons.BaseTest
     {
         IWebDriver driver;
         UserHomePageObject homePage;
         UserLoginPageObject loginPage;
+        AdminLoginPageObject adminLoginPage;
+        AdminDashboardPageObject adminDashboardPage;
 
-        private string email;
-        private string password = "123456";
+        private string userEmail;
+        private string userPassword = "123456";
+        private string adminEmail = "admin@yourstore.com";
+        private string adminPassword = "admin";
 
         [SetUp]
         public void SetUp()
         {
             driver = GetLocalBrowserDriver("chrome");
-            homePage = new UserHomePageObject(driver);
-            homePage.OpenHomePage();
+            SetEnvironmentUrl("DEV");
+            homePage = PageGenerator.GetUserHomePage(driver);
+            homePage.OpenUserURL(driver,userUrl);
             UserRegisterPageObject registerPage = homePage.ClickRegisterLink();
             string firstName = "Nguyen";
             string lastName = "Thuc";
@@ -27,16 +34,16 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
             string year = "1995";
             string company = "Nashtech";
             string confirmPassword = "123456";
-            email = registerPage.GetRandomEmail("gmail.com");
+            userEmail = registerPage.GetRandomEmail("gmail.com");
             registerPage.SelectMaleGender();
             registerPage.InputFirstName(firstName);
             registerPage.InputLastName(lastName);
             registerPage.SelectDay(day);
             registerPage.SelectMonth(month);
             registerPage.SelectYear(year);
-            registerPage.InputEmail(email);
+            registerPage.InputEmail(userEmail);
             registerPage.InputCompany(company);
-            registerPage.InputPassword(password);
+            registerPage.InputPassword(userPassword);
             registerPage.InputConfirmPassword(confirmPassword);
             registerPage.ClickRegisterButton();
 
@@ -47,14 +54,17 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
         }
 
         [Test]
-        public void TC_01_Login_Email_Successfully()
+        public void TC_01_Login_Admin_Successfully()
         {
             loginPage = homePage.ClickLoginLink();
-            loginPage.InputEmail(email);
-            loginPage.InputPassword(password);
-            loginPage.ClickLoginButton();
-            homePage = new UserHomePageObject(driver);
-            Assert.IsTrue(homePage.IsMyAccountLinkDisplayed());
+            homePage = loginPage.LoginAsUser(userEmail, userPassword);
+            homePage.ClickUserLogoutLink(driver);
+
+            adminLoginPage = homePage.OpenAdminURL(driver,adminUrl);
+            adminDashboardPage = adminLoginPage.LoginAsAdmin(adminEmail, adminPassword);
+            Assert.True(adminDashboardPage.IsDashBoardPageDisplayed());
+            adminLoginPage=adminDashboardPage.ClickAdminLogoutLink(driver);
+            Assert.Pass();
         }
 
         [TearDown]

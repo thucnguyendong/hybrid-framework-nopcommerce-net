@@ -1,4 +1,6 @@
-﻿using hybrid_framwork_nopcommerce.interfaces.pageUI;
+﻿using hybrid_framwork_nopcommerce.actions.pageObject;
+using hybrid_framwork_nopcommerce.actions.pageObject.admin;
+using hybrid_framwork_nopcommerce.interfaces.pageUI;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
@@ -444,6 +446,32 @@ namespace hybrid_framwork_nopcommerce.actions.commons
         {
             WaitForElementClickable(driver, BasePageUI.DYNAMIC_PAGE_FOOTER, menuItem);
             ClickElement(driver, BasePageUI.DYNAMIC_PAGE_FOOTER, menuItem);
+        }
+
+        public UserHomePageObject ClickUserLogoutLink(IWebDriver driver)
+        {
+            WaitForElementClickable(driver, BasePageUI.USER_LOGOUT_LINK);
+            ClickElement(driver, BasePageUI.USER_LOGOUT_LINK);
+            return PageGenerator.GetUserHomePage(driver);
+        }
+
+        public AdminLoginPageObject ClickAdminLogoutLink(IWebDriver driver)
+        {
+            WaitForElementClickable(driver, BasePageUI.ADMIN_LOGOUT_LINK);
+            ClickElement(driver, BasePageUI.ADMIN_LOGOUT_LINK);
+            return PageGenerator.GetAdminLoginPage(driver);
+        }
+
+        public UserHomePageObject OpenUserURL(IWebDriver driver, string url)
+        {
+            OpenBrowser(driver, url);
+            return PageGenerator.GetUserHomePage(driver);
+        }
+
+        public AdminLoginPageObject OpenAdminURL(IWebDriver driver, string url)
+        {
+            OpenBrowser(driver, url);
+            return PageGenerator.GetAdminLoginPage(driver);
         }
     }
 }

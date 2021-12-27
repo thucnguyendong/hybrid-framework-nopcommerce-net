@@ -1,5 +1,5 @@
 ﻿using hybrid_framwork_nopcommerce.actions.pageObject;
-using hybrid_framwork_nopcommerce.actions.pageObject.myWebMenuItem;
+using hybrid_framwork_nopcommerce.actions.pageObject.mywebMenu;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -11,9 +11,9 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.pagegenerator
     class TC_Page_Generator_Manager : actions.commons.BaseTest
     {
         private IWebDriver driver;
-        private HomePageObject homePage;
-        private RegisterPageObject registerPage;
-        private LoginPageObject loginPage;
+        private UserHomePageObject homePage;
+        private UserRegisterPageObject registerPage;
+        private UserLoginPageObject loginPage;
         private CustomerInfoPageObject customerInfoPage;
 
         private string firstName = "Nguyen";
@@ -30,7 +30,7 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.pagegenerator
         public void Setup()
         {
             driver = GetLocalBrowserDriver("chrome");
-            homePage = new HomePageObject(driver);
+            homePage = new UserHomePageObject(driver);
             homePage.OpenHomePage();
 
             registerPage = homePage.ClickRegisterLink();
@@ -56,7 +56,7 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.pagegenerator
             loginPage= homePage.ClickLoginLink();
             loginPage.InputEmail(email);
             loginPage.InputPassword(password);
-            homePage =loginPage.ClickLogin();
+            homePage =loginPage.ClickLoginButton();
             customerInfoPage = homePage.ClickMyAccountLink();
             Assert.AreEqual(customerInfoPage.GetFirstNameTextboxValue(),firstName);
             Assert.AreEqual(customerInfoPage.GetLastNameTextboxValue(),lastName);

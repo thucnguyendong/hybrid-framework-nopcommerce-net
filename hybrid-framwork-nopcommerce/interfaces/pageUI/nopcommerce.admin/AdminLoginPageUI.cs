@@ -1,7 +1,10 @@
-﻿
-namespace hybrid_framwork_nopcommerce.interfaces.pageUI
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace hybrid_framwork_nopcommerce.interfaces.pageUI.nopcommerce.admin
 {
-    public class LoginPageUI
+    public class AdminLoginPageUI
     {
         public static readonly string EMAIL_TEXTBOX = "//input[@id='Email']";
         public static readonly string PASSWORD_TEXTBOX = "//input[@id='Password']";

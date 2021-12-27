@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="resources\" />
-    <Folder Include="testcases\com.nopcommerce.adminaccount\" />
     <Folder Include="testdata\" />
   </ItemGroup>
 

@@ -1,5 +1,5 @@
 ﻿using hybrid_framwork_nopcommerce.actions.pageObject;
-using hybrid_framwork_nopcommerce.actions.pageObject.myWebMenuItem;
+using hybrid_framwork_nopcommerce.actions.pageObject.mywebMenu;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
@@ -11,8 +11,8 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.pagegenerator
     class TC_Switch_Page : actions.commons.BaseTest
     {
         private IWebDriver driver;
-        private HomePageObject homePage;
-        private RegisterPageObject registerPage;
+        private UserHomePageObject homePage;
+        private UserRegisterPageObject registerPage;
         private CustomerInfoPageObject customerInfoPage;
 
         private string firstName = "Nguyen";
@@ -29,7 +29,7 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.pagegenerator
         public void Setup()
         {
             driver = GetLocalBrowserDriver("chrome");
-            homePage = new HomePageObject(driver);
+            homePage = new UserHomePageObject(driver);
             homePage.OpenHomePage();
 
             registerPage = homePage.ClickRegisterLink();
@@ -53,7 +53,7 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.pagegenerator
         {
             customerInfoPage = homePage.ClickMyAccountLink();
             customerInfoPage.ClickItemInMyAccountMenuByName(driver, "Addresses");
-            AddressPageObject addressPage = PageGenerator.GetAddressPage(driver);
+            UserAddressPageObject addressPage = PageGenerator.GetAddressPage(driver);
             addressPage.ClickItemInMyAccountMenuByName(driver, "My product reviews");
             MyProductReviewPageObject myProductReviewPageObject = PageGenerator.GetMyProductReviewPage(driver);
             Assert.Pass();

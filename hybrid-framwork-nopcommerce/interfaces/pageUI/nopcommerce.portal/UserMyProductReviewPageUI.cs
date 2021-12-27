@@ -4,7 +4,7 @@ using System.Text;
 
 namespace hybrid_framwork_nopcommerce.actions.pageObject
 {
-    class MyProductReviewPageUI
+    public class UserMyProductReviewPageUI
     {
     }
 }

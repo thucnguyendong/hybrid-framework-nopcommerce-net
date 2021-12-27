@@ -4,7 +4,7 @@ using System.Text;
 
 namespace hybrid_framwork_nopcommerce.interfaces.pageUI
 {
-    public class RegisterPageUI
+    public class UserRegisterPageUI
     {
 		public static readonly String MALE_RADIO_BUTTON ="//input[@id='gender-male']";
 		public static readonly String FEMALE_RADIO_BUTTON = "//input[@id='gender-female']";

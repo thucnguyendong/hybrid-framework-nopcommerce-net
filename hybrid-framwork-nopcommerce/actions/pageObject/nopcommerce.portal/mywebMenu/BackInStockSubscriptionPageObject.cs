@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace hybrid_framwork_nopcommerce.actions.pageObject.myWebMenuItem
+namespace hybrid_framwork_nopcommerce.actions.pageObject.mywebMenu
 {
     public class BackInStockSubscriptionPageObject : commons.BasePage
     {

@@ -10,6 +10,7 @@ namespace hybrid_framwork_nopcommerce.actions.commons
     public class BaseTest
     {
         private IWebDriver driver;
+        protected string userUrl, adminUrl;
 
         // This will get the current WORKING directory (i.e. \bin\Debug)
         private string workingDirectory = Environment.CurrentDirectory;
@@ -38,5 +39,20 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             driver.Manage().Timeouts().ImplicitWait = System.TimeSpan.FromSeconds(30);
             return driver;
         }
+
+        protected void SetEnvironmentUrl(string environment)
+        {
+            switch (environment)
+            {
+                case "DEV":
+                    userUrl = GlobalConstants.USER_URL;
+                    adminUrl = GlobalConstants.ADMIN_URL;
+                    break;
+                default:
+                    Console.WriteLine("Incorrect environment. Please input DEV, TEST or STG.");
+                    break;
+            }
+        }
+
     }
 }

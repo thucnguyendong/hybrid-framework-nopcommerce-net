@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace hybrid_framwork_nopcommerce.actions.pageObject.myWebMenuItem
+namespace hybrid_framwork_nopcommerce.actions.pageObject.mywebMenu
 {
-    class RewardPageObject : commons.BasePage
+    class OrderPageObject : commons.BasePage
     {
         private IWebDriver driver;
 
-        public RewardPageObject(IWebDriver driver)
+        public OrderPageObject(IWebDriver driver)
         {
             this.driver = driver;
         }
