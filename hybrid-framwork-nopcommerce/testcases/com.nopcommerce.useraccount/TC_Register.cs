@@ -2,6 +2,7 @@ using hybrid_framwork_nopcommerce.actions.pageObject;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
+
 namespace hybrid_framwork_nopcommerce
 {
     public class TC_Register: actions.commons.BaseTest
@@ -24,9 +25,9 @@ namespace hybrid_framwork_nopcommerce
         [SetUp]
         public void Setup()
         {
-            driver = GetLocalBrowserDriver("chrome");
+            SetEnvironmentUrl("DEV");
+            driver = GetBrowserDriver("chrome",userUrl);
             homePage = new UserHomePageObject(driver);
-            homePage.OpenHomePage();
         }
 
         [Test]
@@ -46,11 +47,17 @@ namespace hybrid_framwork_nopcommerce
             registerPage.InputConfirmPassword(confirmPassword);
             registerPage.ClickRegisterButton();
 
-            Assert.AreEqual(registerPage.GetSuccessMessage(), "Your registration completed");
+            verifyEquals(registerPage.GetSuccessMessage(), "Your registration completed");
 
             homePage = registerPage.ClickLogOutLink();
             homePage.SleepInSecond(1);
             Assert.Pass();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            driver.Quit();
         }
     }
 }
