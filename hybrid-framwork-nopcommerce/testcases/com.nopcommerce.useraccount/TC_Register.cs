@@ -1,5 +1,8 @@
+using AventStack.ExtentReports;
 using hybrid_framwork_nopcommerce.actions.pageObject;
+using hybrid_framwork_nopcommerce.actions.reportConfig;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 
 
@@ -20,7 +23,6 @@ namespace hybrid_framwork_nopcommerce
         private string company = "Nashtech";
         private string password = "123456";
         private string confirmPassword = "123456";
-
 
         [SetUp]
         public void Setup()
@@ -47,16 +49,13 @@ namespace hybrid_framwork_nopcommerce
             registerPage.InputConfirmPassword(confirmPassword);
             registerPage.ClickRegisterButton();
 
-            verifyEquals(registerPage.GetSuccessMessage(), "Your registration completed");
-
-            homePage = registerPage.ClickLogOutLink();
-            homePage.SleepInSecond(1);
-            Assert.Pass();
+            VerifyEquals(registerPage.GetSuccessMessage(), "Your registration completed");           
         }
 
         [TearDown]
         public void TearDown()
         {
+            LogExtentTestResult();
             driver.Quit();
         }
     }

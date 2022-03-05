@@ -54,12 +54,13 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
             loginPage.InputPassword(password);
             loginPage.ClickLoginButton();
             homePage = new UserHomePageObject(driver);
-            Assert.IsTrue(homePage.IsMyAccountLinkDisplayed());
+            VerifyTrue(homePage.IsMyAccountLinkDisplayed());
         }
 
         [TearDown]
         public void TearDown()
         {
+            LogExtentTestResult();
             driver.Quit();
         }
     }

@@ -95,6 +95,7 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
         [TearDown]
         public void TearDown()
         {
+            LogExtentTestResult();
             driver.Quit();
         }
     }

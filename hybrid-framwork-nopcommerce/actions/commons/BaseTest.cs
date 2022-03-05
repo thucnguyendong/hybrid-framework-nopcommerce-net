@@ -9,27 +9,39 @@ using WebDriverManager.DriverConfigs.Impl;
 using log4net;
 using log4net.Config;
 using NUnit.Framework;
+using AventStack.ExtentReports;
+using hybrid_framwork_nopcommerce.actions.reportConfig;
+using NUnit.Framework.Interfaces;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "app.config", Watch = true)]
 
 
 namespace hybrid_framwork_nopcommerce.actions.commons
 {
+    [TestFixture]
     public class BaseTest
     {
         private IWebDriver driver;
         protected string userUrl, adminUrl;
         protected readonly ILog log;
-
-        // This will get the current WORKING directory (i.e. \bin\Debug)
-        private string workingDirectory = Environment.CurrentDirectory;
-
-        // This will get the current PROJECT directory
-        private string projectDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent.FullName;
+        protected ExtentReports report;
+        protected ExtentTest test;
 
         public BaseTest()
         {
             log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        }
+
+        [OneTimeSetUp]
+        public void Init()
+        {
+            report = ExtentManager.CreateInstance();
+            test = ExtentTestManager.CreateTest(TestContext.CurrentContext.Test.Name);
+        }
+
+        [OneTimeTearDown]
+        public void Cleanup()
+        {            
         }
         protected IWebDriver GetBrowserDriver(string browserName, string url)
         {
@@ -49,7 +61,7 @@ namespace hybrid_framwork_nopcommerce.actions.commons
                 var options = new EdgeOptions();
                 options.UseChromium = true;
                 options.BinaryLocation = @"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe";
-                string driverPath = Path.Combine(projectDirectory, "driverBrowsers");
+                string driverPath = Path.Combine(GlobalConstants.PROJECT_DIR, "driverBrowsers");
                 driver = new EdgeDriver(driverPath, options);
             }
             driver.Manage().Window.Maximize();
@@ -73,7 +85,7 @@ namespace hybrid_framwork_nopcommerce.actions.commons
                 var options = new EdgeOptions();
                 options.UseChromium = true;
                 options.BinaryLocation = @"C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe";
-                string driverPath = Path.Combine(projectDirectory, "driverBrowsers");
+                string driverPath = Path.Combine(GlobalConstants.PROJECT_DIR, "driverBrowsers");
                 driver = new EdgeDriver(driverPath, options);
             }
             driver.Manage().Window.Maximize();
@@ -95,7 +107,7 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             }
         }
 
-        private bool checkTrue(bool condition)
+        private bool CheckTrue(bool condition)
         {
             bool pass = true;
             try
@@ -117,12 +129,12 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             return pass;
         }
 
-        protected bool verifyTrue(bool condition)
+        protected bool VerifyTrue(bool condition)
         {
-            return checkTrue(condition);
+            return CheckTrue(condition);
         }
 
-        private bool checkFailed(bool condition)
+        private bool CheckFailed(bool condition)
         {
             bool pass = true;
             try
@@ -144,12 +156,12 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             return pass;
         }
 
-        protected bool verifyFalse(bool condition)
+        protected bool VerifyFalse(bool condition)
         {
-            return checkFailed(condition);
+            return CheckFailed(condition);
         }
 
-        private bool checkEquals(Object actual, Object expected)
+        private bool CheckEquals(Object actual, Object expected)
         {
             bool pass = true;
             try
@@ -165,9 +177,71 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             return pass;
         }
 
-        protected bool verifyEquals(Object actual, Object expected)
+        protected bool VerifyEquals(Object actual, Object expected)
         {
-            return checkEquals(actual, expected);
+            return CheckEquals(actual, expected);
         }
+
+        protected void LogExtentTestResult()
+        {
+            var status = TestContext.CurrentContext.Result.Outcome.Status;
+            var message = TestContext.CurrentContext.Result.Message;
+            var stacktrace = "";
+            Status logstatus;
+
+            switch (status)
+            {
+                case TestStatus.Failed:
+                    logstatus = Status.Fail;
+                    stacktrace = string.IsNullOrEmpty(TestContext.CurrentContext.Result.StackTrace)
+                    ? ""
+                    : string.Format("{0}", TestContext.CurrentContext.Result.StackTrace);
+                    test.AddScreenCaptureFromBase64String(SaveScreenShootAsBase64(driver));
+                    break;
+                case TestStatus.Inconclusive:
+                    logstatus = Status.Warning;
+                    break;
+                case TestStatus.Skipped:
+                    logstatus = Status.Skip;
+                    break;
+                default:
+                    logstatus = Status.Pass;
+                    break;
+            }
+
+            test.Log(logstatus, "Test " + logstatus + "<br />" + message + "<br />" + stacktrace);           
+            report.Flush();
+        }
+
+        public String CaptureScreenshoot(IWebDriver driver, String screenshotName)
+        {
+            try
+            {
+                string currentDate = DateTime.Now.ToString("ddMMyyyyhhmmss");
+                String scrShootPath = GlobalConstants.PROJECT_DIR + Path.DirectorySeparatorChar + "img" + Path.DirectorySeparatorChar + screenshotName + currentDate + ".png";
+                ITakesScreenshot scrShot = (ITakesScreenshot)driver;
+                scrShot.GetScreenshot().SaveAsFile(scrShootPath, OpenQA.Selenium.ScreenshotImageFormat.Png);
+                return scrShootPath;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
+        public String SaveScreenShootAsBase64(IWebDriver driver)
+        {
+            try
+            {
+                ITakesScreenshot scrShot = (ITakesScreenshot)driver;
+                return 
+                    scrShot.GetScreenshot().AsBase64EncodedString;
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+        }
+
     }
 }
