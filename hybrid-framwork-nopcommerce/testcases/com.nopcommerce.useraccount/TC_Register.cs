@@ -6,8 +6,9 @@ using NUnit.Framework.Interfaces;
 using OpenQA.Selenium;
 
 
-namespace hybrid_framwork_nopcommerce
+namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
 {
+    [TestFixture]
     public class TC_Register: actions.commons.BaseTest
     {
         private IWebDriver driver;

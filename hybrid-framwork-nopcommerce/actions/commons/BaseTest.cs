@@ -12,13 +12,14 @@ using NUnit.Framework;
 using AventStack.ExtentReports;
 using hybrid_framwork_nopcommerce.actions.reportConfig;
 using NUnit.Framework.Interfaces;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "app.config", Watch = true)]
 
 
 namespace hybrid_framwork_nopcommerce.actions.commons
 {
-    [TestFixture]
     public class BaseTest
     {
         private IWebDriver driver;
@@ -26,23 +27,17 @@ namespace hybrid_framwork_nopcommerce.actions.commons
         protected readonly ILog log;
         protected ExtentReports report;
         protected ExtentTest test;
+        public static ReadOnlyCollection<Cookie> loginPageCookies;
+        public static string globalEmail;
+        public static string globalPasswword;
 
         public BaseTest()
         {
             log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        }
-
-        [OneTimeSetUp]
-        public void Init()
-        {
             report = ExtentManager.CreateInstance();
             test = ExtentTestManager.CreateTest(TestContext.CurrentContext.Test.Name);
         }
 
-        [OneTimeTearDown]
-        public void Cleanup()
-        {            
-        }
         protected IWebDriver GetBrowserDriver(string browserName, string url)
         {
             if (browserName.Equals("chrome"))

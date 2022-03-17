@@ -6,6 +6,7 @@ using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -68,6 +69,20 @@ namespace hybrid_framwork_nopcommerce.actions.commons
         public String GetAlertText(IWebDriver driver)
         {
             return WaitForAlertPresence(driver).Text;
+        }
+
+        public ReadOnlyCollection<Cookie> GetAllCookies(IWebDriver driver)
+        {
+            return driver.Manage().Cookies.AllCookies;
+        }
+
+        public void SetCookies(IWebDriver driver, ReadOnlyCollection<Cookie> cookies)
+        {
+            foreach (Cookie cookie in cookies)
+            {
+                driver.Manage().Cookies.AddCookie(cookie);
+            }
+            SleepInSecond(5);
         }
 
         public void SwitchToWindowNotHomeByID(IWebDriver driver, String homeID)
@@ -540,6 +555,23 @@ namespace hybrid_framwork_nopcommerce.actions.commons
         {
             OpenBrowser(driver, url);
             return PageGenerator.GetAdminLoginPage(driver);
+        }
+
+        public void InputTextboxByID(IWebDriver driver, string textbox_id, string value)
+        {
+            WaitForElementVisible(driver,BasePageUI.DYNAMIC_TEXTBOX_BY_ID, textbox_id);
+            InputIntoElement(driver, BasePageUI.DYNAMIC_TEXTBOX_BY_ID, textbox_id,value);
+        }
+
+        public void ClickButtonByText(IWebDriver driver, string button_text)
+        {
+            WaitForElementVisible(driver, BasePageUI.DYNAMIC_BUTTON_BY_TEXT, button_text);
+            ClickElement(driver, BasePageUI.DYNAMIC_BUTTON_BY_TEXT, button_text);
+        }
+
+        public void SelectDropdownListByName(IWebDriver driver, string dropdown_name,string value)
+        {
+            SelectItemInDefaultDropdown(driver, BasePageUI.DYNAMIC_DROPDOWN_LIST_BY_NAME, dropdown_name, value);
         }
     }
 }

@@ -52,39 +52,13 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
         [Test]
         public void TC_04_Login_Email_With_Invalid_Password()
         {
-            UserRegisterPageObject registerPage = homePage.ClickRegisterLink();
-            string firstName = "Nguyen";
-            string lastName = "Thuc";
-            string day = "11";
-            string month = "May";
-            string year = "1995";
-            string company = "Nashtech";
-            string confirmPassword = "123456";
-            email = registerPage.GetRandomEmail("gmail.com");
-            registerPage.SelectMaleGender();
-            registerPage.InputFirstName(firstName);
-            registerPage.InputLastName(lastName);
-            registerPage.SelectDay(day);
-            registerPage.SelectMonth(month);
-            registerPage.SelectYear(year);
-            registerPage.InputEmail(email);
-            registerPage.InputCompany(company);
-            registerPage.InputPassword(password);
-            registerPage.InputConfirmPassword(confirmPassword);
-            registerPage.ClickRegisterButton();
-
-            Assert.AreEqual(registerPage.GetSuccessMessage(), "Your registration completed");
-
-            homePage = registerPage.ClickLogOutLink();
-            homePage.SleepInSecond(1);
-
             loginPage = homePage.ClickLoginLink();
-            loginPage.InputEmail(email);
+            loginPage.InputEmail(globalEmail);
             loginPage.ClickLoginButton();
             Assert.AreEqual(loginPage.GetValidationError(),
                 "Login was unsuccessful. Please correct the errors and try again." + "\r\n" + "The credentials provided are incorrect");
 
-            loginPage.InputEmail(email);
+            loginPage.InputEmail(globalEmail);
             loginPage.InputPassword("12345");
             loginPage.ClickLoginButton();
             Assert.AreEqual(loginPage.GetValidationError(),
