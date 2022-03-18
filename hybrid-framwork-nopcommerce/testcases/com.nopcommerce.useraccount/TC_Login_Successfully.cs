@@ -4,6 +4,9 @@ using OpenQA.Selenium;
 
 namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
 {
+    [TestFixture]
+    [AllureNUnit]
+    [AllureDisplayIgnored]
     class TC_Login_Successfully:actions.commons.BaseTest
     {
         IWebDriver driver;

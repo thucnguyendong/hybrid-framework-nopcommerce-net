@@ -9,7 +9,7 @@ using OpenQA.Selenium;
 namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
 {
     [TestFixture]
-    public class TC_Register: actions.commons.BaseTest
+    class TC_Register: actions.commons.BaseTest
     {
         private IWebDriver driver;
         private UserHomePageObject homePage;
