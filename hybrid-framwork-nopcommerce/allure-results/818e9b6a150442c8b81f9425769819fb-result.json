@@ -1,0 +1,77 @@
+{
+  "uuid": "8a4066e3-0a66-41ae-bce2-097d406e2b4c-tr-0-1007",
+  "historyId": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully",
+  "fullName": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ADMIN"
+    },
+    {
+      "name": "package",
+      "value": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount"
+    },
+    {
+      "name": "testMethod",
+      "value": "TC_01_Login_Email_Successfully"
+    },
+    {
+      "name": "testClass",
+      "value": "TC_Login_Successfully"
+    },
+    {
+      "name": "severity",
+      "value": "blocker"
+    },
+    {
+      "name": "epic",
+      "value": "Web"
+    },
+    {
+      "name": "feature",
+      "value": "user"
+    }
+  ],
+  "links": [],
+  "name": "TC_01_Login_Email_Successfully",
+  "status": "passed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "TC_01_Login_Email_Successfully"
+  },
+  "stage": "finished",
+  "description": "Log in email",
+  "steps": [
+    {
+      "name": "TC_01_Login_Email_Successfully",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "72d532a6c5144fb7b00820aec2b8cd25-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1647624939860,
+      "stop": 1647624944160
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1647624939860,
+  "stop": 1647624944162
+}

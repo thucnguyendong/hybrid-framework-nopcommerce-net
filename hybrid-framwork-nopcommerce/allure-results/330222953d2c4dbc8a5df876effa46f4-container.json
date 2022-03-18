@@ -1,0 +1,44 @@
+{
+  "uuid": "7004a08a-dd18-4f23-9dc3-7af8f652819f-tc-0-1006",
+  "name": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully",
+  "children": [
+    "f59d6564-6117-46ab-b6bb-aaf79a54e804-tr-0-1007"
+  ],
+  "befores": [
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1647621913991,
+      "stop": 1647621913991
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1647621913991,
+      "stop": 1647621913991
+    }
+  ],
+  "links": [],
+  "start": 1647621907137,
+  "stop": 1647621914008
+}

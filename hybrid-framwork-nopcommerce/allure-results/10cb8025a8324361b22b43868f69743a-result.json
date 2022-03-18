@@ -1,0 +1,80 @@
+{
+  "uuid": "15964b31-74f4-4151-9e32-ddea0390860c-tr-0-1007",
+  "historyId": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully",
+  "fullName": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ADMIN"
+    },
+    {
+      "name": "package",
+      "value": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount"
+    },
+    {
+      "name": "testMethod",
+      "value": "TC_01_Login_Email_Successfully"
+    },
+    {
+      "name": "testClass",
+      "value": "TC_Login_Successfully"
+    },
+    {
+      "name": "severity",
+      "value": "blocker"
+    },
+    {
+      "name": "epic",
+      "value": "Web"
+    },
+    {
+      "name": "feature",
+      "value": "user"
+    }
+  ],
+  "links": [],
+  "name": "TC_01_Login_Email_Successfully",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "  Expected: False\r\n  But was:  True\r\n\r\nTearDown : System.IO.FileNotFoundException : Test attachment file path could not be found.",
+    "trace": "   at hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully() in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\testcases\\com.nopcommerce.useraccount\\TC_Login_Successfully.cs:line 39\r\n\r\n--TearDown\r\n   at NUnit.Framework.TestContext.AddTestAttachment(String filePath, String description)\r\n   at hybrid_framwork_nopcommerce.actions.commons.BaseTest.AddScreenShootToAllureReportWhenFailed(IWebDriver driver) in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\actions\\commons\\BaseTest.cs:line 250\r\n   at hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TearDown() in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\testcases\\com.nopcommerce.useraccount\\TC_Login_Successfully.cs:line 45"
+  },
+  "stage": "finished",
+  "description": "\nTearDown TearDown method failed\nLog in email",
+  "steps": [
+    {
+      "name": "TC_01_Login_Email_Successfully",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "  Expected: False\r\n  But was:  True\r\n\r\nTearDown : System.IO.FileNotFoundException : Test attachment file path could not be found.",
+        "trace": "   at hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully() in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\testcases\\com.nopcommerce.useraccount\\TC_Login_Successfully.cs:line 39\r\n\r\n--TearDown\r\n   at NUnit.Framework.TestContext.AddTestAttachment(String filePath, String description)\r\n   at hybrid_framwork_nopcommerce.actions.commons.BaseTest.AddScreenShootToAllureReportWhenFailed(IWebDriver driver) in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\actions\\commons\\BaseTest.cs:line 250\r\n   at hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TearDown() in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\testcases\\com.nopcommerce.useraccount\\TC_Login_Successfully.cs:line 45"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "Console Output",
+          "source": "580d7a0d19ba49a59e731e8882d72820-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1647624653152,
+      "stop": 1647624656635
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1647624653152,
+  "stop": 1647624656637
+}

@@ -14,6 +14,8 @@ using hybrid_framwork_nopcommerce.actions.reportConfig;
 using NUnit.Framework.Interfaces;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Allure.Commons;
+using Status = AventStack.ExtentReports.Status;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "app.config", Watch = true)]
 
@@ -36,6 +38,7 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
             report = ExtentManager.CreateInstance();
             test = ExtentTestManager.CreateTest(TestContext.CurrentContext.Test.Name);
+            Environment.CurrentDirectory = GlobalConstants.PROJECT_DIR;
         }
 
         protected IWebDriver GetBrowserDriver(string browserName, string url)
@@ -213,7 +216,7 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             try
             {
                 string currentDate = DateTime.Now.ToString("ddMMyyyyhhmmss");
-                String scrShootPath = GlobalConstants.PROJECT_DIR + Path.DirectorySeparatorChar + "img" + Path.DirectorySeparatorChar + screenshotName + currentDate + ".png";
+                String scrShootPath = GlobalConstants.PROJECT_DIR + Path.DirectorySeparatorChar + "screenshot" + Path.DirectorySeparatorChar + screenshotName + currentDate + ".png";
                 ITakesScreenshot scrShot = (ITakesScreenshot)driver;
                 scrShot.GetScreenshot().SaveAsFile(scrShootPath, OpenQA.Selenium.ScreenshotImageFormat.Png);
                 return scrShootPath;
@@ -238,5 +241,15 @@ namespace hybrid_framwork_nopcommerce.actions.commons
             }
         }
 
+        public void AddScreenShootToAllureReportWhenFailed(IWebDriver driver)
+        {
+            if (TestContext.CurrentContext.Result.Outcome != ResultState.Success)
+            {
+                var filename = TestContext.CurrentContext.Test.MethodName;
+                var path = CaptureScreenshoot(driver, filename);
+                TestContext.AddTestAttachment(path);
+                AllureLifecycle.Instance.AddAttachment(filename, "image/png", path);
+            }
+        }
     }
 }

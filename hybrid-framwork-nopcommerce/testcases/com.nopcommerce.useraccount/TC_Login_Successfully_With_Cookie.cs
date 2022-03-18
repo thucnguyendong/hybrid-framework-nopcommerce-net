@@ -1,6 +1,7 @@
 ﻿using hybrid_framwork_nopcommerce.actions.pageObject;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using System;
 
 namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
 {
@@ -23,7 +24,7 @@ namespace hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount
         public void TC_01_Login_Email_Successfully()
         {
             loginPage = homePage.ClickLoginLink();
-            loginPage.SetCookies(driver, loginPageCookies);
+            loginPage.LoginAsUser(globalEmail, globalPasswword);
             VerifyTrue(homePage.IsMyAccountLinkDisplayed());
         }
 

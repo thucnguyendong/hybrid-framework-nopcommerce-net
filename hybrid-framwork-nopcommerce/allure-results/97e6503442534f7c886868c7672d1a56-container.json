@@ -1,0 +1,46 @@
+{
+  "uuid": "614cc0fe-2ff5-4104-ae46-70e4e4170cd8-tc-0-1006",
+  "name": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully",
+  "children": [
+    "15964b31-74f4-4151-9e32-ddea0390860c-tr-0-1007"
+  ],
+  "befores": [
+    {
+      "name": "SetUp",
+      "status": "passed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1647624656633,
+      "stop": 1647624656633
+    }
+  ],
+  "afters": [
+    {
+      "name": "TearDown",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "  Expected: False\r\n  But was:  True\r\n\r\nTearDown : System.IO.FileNotFoundException : Test attachment file path could not be found.",
+        "trace": "   at hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully() in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\testcases\\com.nopcommerce.useraccount\\TC_Login_Successfully.cs:line 39\r\n\r\n--TearDown\r\n   at NUnit.Framework.TestContext.AddTestAttachment(String filePath, String description)\r\n   at hybrid_framwork_nopcommerce.actions.commons.BaseTest.AddScreenShootToAllureReportWhenFailed(IWebDriver driver) in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\actions\\commons\\BaseTest.cs:line 250\r\n   at hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TearDown() in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\testcases\\com.nopcommerce.useraccount\\TC_Login_Successfully.cs:line 45"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [],
+      "parameters": [],
+      "start": 1647624656633,
+      "stop": 1647624656633
+    }
+  ],
+  "links": [],
+  "start": 1647624653150,
+  "stop": 1647624656651
+}

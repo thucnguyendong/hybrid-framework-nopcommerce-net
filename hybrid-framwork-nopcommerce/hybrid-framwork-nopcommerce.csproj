@@ -8,6 +8,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="categories.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="categories.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="ExtentReports" Version="4.1.0" />
     <PackageReference Include="log4net" Version="2.0.14" />
@@ -28,6 +36,8 @@
   <ItemGroup>
     <Folder Include="extentReport\" />
     <Folder Include="allure-results\" />
+    <Folder Include="allure-reports\" />
+    <Folder Include="screenshot\" />
     <Folder Include="resources\" />
     <Folder Include="testdata\" />
   </ItemGroup>

@@ -1,0 +1,85 @@
+{
+  "uuid": "cb71ca40-fb11-41e2-a331-9e5a2e46ddc7-tr-0-1007",
+  "historyId": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully",
+  "fullName": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully",
+  "labels": [
+    {
+      "name": "thread",
+      "value": "NonParallelWorker"
+    },
+    {
+      "name": "host",
+      "value": "ADMIN"
+    },
+    {
+      "name": "package",
+      "value": "hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount"
+    },
+    {
+      "name": "testMethod",
+      "value": "TC_01_Login_Email_Successfully"
+    },
+    {
+      "name": "testClass",
+      "value": "TC_Login_Successfully"
+    },
+    {
+      "name": "severity",
+      "value": "blocker"
+    },
+    {
+      "name": "epic",
+      "value": "Web"
+    },
+    {
+      "name": "feature",
+      "value": "user"
+    }
+  ],
+  "links": [],
+  "name": "TC_01_Login_Email_Successfully",
+  "status": "failed",
+  "statusDetails": {
+    "known": false,
+    "muted": false,
+    "flaky": false,
+    "message": "  Expected: False\r\n  But was:  True\r\n",
+    "trace": "   at hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully() in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\testcases\\com.nopcommerce.useraccount\\TC_Login_Successfully.cs:line 39\r\n"
+  },
+  "stage": "finished",
+  "description": "Log in email",
+  "steps": [
+    {
+      "name": "TC_01_Login_Email_Successfully",
+      "status": "failed",
+      "statusDetails": {
+        "known": false,
+        "muted": false,
+        "flaky": false,
+        "message": "  Expected: False\r\n  But was:  True\r\n",
+        "trace": "   at hybrid_framwork_nopcommerce.testcases.com.nopcommerce.useraccount.TC_Login_Successfully.TC_01_Login_Email_Successfully() in C:\\Users\\Admin\\source\\repos\\hybrid-framwork-nopcommerce\\hybrid-framwork-nopcommerce\\testcases\\com.nopcommerce.useraccount\\TC_Login_Successfully.cs:line 39\r\n"
+      },
+      "stage": "finished",
+      "steps": [],
+      "attachments": [
+        {
+          "name": "TC_01_Login_Email_Successfully",
+          "source": "580dbfe8a3cd45e193fed9eeef8566ee-attachment.png",
+          "type": "image/png"
+        },
+        {
+          "name": "Console Output",
+          "source": "febb8f62574147d5a6eac151065493d2-attachment.txt",
+          "type": "text/plain"
+        }
+      ],
+      "parameters": [],
+      "start": 1647624840807,
+      "stop": 1647624844350
+    }
+  ],
+  "attachments": [],
+  "parameters": [],
+  "start": 1647624840806,
+  "stop": 1647624844353
+}
