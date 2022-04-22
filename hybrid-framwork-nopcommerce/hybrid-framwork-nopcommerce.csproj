@@ -18,6 +18,8 @@
   <ItemGroup>
     <PackageReference Include="DotNetSeleniumExtras.WaitHelpers" Version="3.11.0" />
     <PackageReference Include="ExtentReports" Version="4.1.0" />
+    <PackageReference Include="Faker.Net" Version="2.0.154" />
+    <PackageReference Include="Json.Net" Version="1.0.33" />
     <PackageReference Include="log4net" Version="2.0.14" />
     <PackageReference Include="Microsoft.Edge.SeleniumTools" Version="3.141.3" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.9.4" />
@@ -30,6 +32,7 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="98.0.4758.8000" />
     <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.30.0.1" />
     <PackageReference Include="Selenium.WebDriver.MicrosoftDriver" Version="17.17134.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.3" />
     <PackageReference Include="WebDriverManager" Version="2.12.3" />
   </ItemGroup>
 
@@ -39,7 +42,6 @@
     <Folder Include="allure-reports\" />
     <Folder Include="screenshot\" />
     <Folder Include="resources\" />
-    <Folder Include="testdata\" />
   </ItemGroup>
 
   <ItemGroup>
